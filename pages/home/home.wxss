@@ -1,0 +1,221 @@
+page {
+  padding-bottom: 180rpx;
+}
+
+.titleImage {
+  opacity: 0.9;
+  /* 设置图片透明度 */
+  position: relative;
+  /* 设置定位为相对定位，为下面设置绝对定位做准备 */
+  border-radius: 0 0 80rpx 80rpx !important;
+  width: 100%;
+  height: 560rpx;
+  margin-bottom: 30rpx;
+}
+
+.titleImage::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.185) 80%);
+  /* 上面是设置渐变蒙版的样式，从透明到白色、80% 处不透明 */
+}
+
+.searchCoverView {
+  top: 40rpx;
+  display: block;
+  width: 100%;
+  position: absolute;
+}
+
+.homeSearchInput {
+  font-size: 24rpx !important;
+}
+
+.homeSearchContainer {
+  color: #ffffff !important;
+  height: 60rpx !important;
+  background-color: #ffffffcc !important;
+  box-shadow: 0rpx 0rpx 4rpx 10rpx rgba(228, 228, 228, 0.15), 0rpx 4rpx 10rpx rgba(209, 209, 209, 0.23);
+}
+
+
+.welcomeCoverView {
+  top: -220rpx;
+  position: relative;
+  width: 100%;
+  color: #ffffff;
+  font-size: 48rpx;
+  font-weight: bolder;
+}
+
+/* 用户卡片 */
+.userCardWrapper {
+  top: 440rpx;
+  position: absolute;
+  width: 100%;
+}
+
+.userCardView {
+  height: 160rpx;
+  background-color: #f5f7faf6;
+  border-radius: 60rpx;
+  padding: 20rpx;
+  box-shadow: 0rpx 0rpx 4rpx 10rpx rgba(228, 228, 228, 0.15), 0rpx 4rpx 10rpx rgba(209, 209, 209, 0.23);
+}
+
+
+.userCardCol {
+  height: 160rpx;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.userCardDetail {
+  height: 160rpx;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.loginText {
+  font-size: 32rpx;
+}
+
+.userCardAvatarWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 140rpx;
+  height: 140rpx;
+  background-color: #ffffff;
+  border-radius: 50%;
+  padding: 4rpx;
+}
+
+.userCardGenderWrapper {
+  top: 116rpx;
+  left: 156rpx;
+  position: absolute;
+}
+
+.userCardUserName {
+  font-size: 36rpx;
+}
+
+.userGender-male {
+  display: inline-block;
+  vertical-align: text-bottom;
+  color: #ffffff;
+  padding: 2rpx;
+  border-radius: 50%;
+  background-color: #257EFA;
+}
+
+.userGender-female {
+  display: inline-block;
+  vertical-align: text-bottom;
+  color: #ffffff;
+  padding: 2rpx;
+  border-radius: 50%;
+  background-color: #CA182A;
+}
+
+.userCardRegion {
+  padding: 12rpx 12rpx;
+  color: #ffffff;
+  background-color: #40A1FF;
+  border-radius: 20rpx;
+  display: flex;
+  font-size: 28rpx;
+  margin-top: 10rpx;
+}
+
+.userCardCoinCol {
+  height: 160rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.homeCoinContent {
+  font-size: 36rpx;
+  color: #B26932;
+}
+
+.notificationCol {
+  margin: 10rpx 0rpx;
+}
+
+.t-notice-bar {
+  padding: 12rpx !important;
+  background-color: #F5F0E7 !important;
+  border-radius: 40rpx;
+}
+
+.notificationContent {
+  font-size: 24rpx !important;
+}
+
+/* .t-notice-bar--info {
+  --td-notice-bar-info-bg-color: #F5F0E7;
+} */
+
+.titleWrapper {
+  margin: 20rpx 0rpx;
+  display: flex;
+  align-items: center;
+}
+
+.titleText {
+  font-size: 42rpx;
+  font-weight: bold;
+}
+
+.titleText::before {
+  color: #db1e06;
+  content: "·";
+  width: 12rpx;
+  height: 100%;
+  margin-right: 10px;
+  background-color: #db1e06;
+}
+
+.homeQuickEntry {
+  --td-grid-item-image-middle-width: 98rpx;
+}
+
+.commonSvc {
+  border: 10rpx solid #ffffff;
+  border-radius: 60rpx;
+  --td-grid-item-image-width: 80rpx;
+}
+
+.commonSvcParty {
+  background-color: #de350b26;
+}
+
+.commonSvcRedeem {
+  background-color: #00999926;
+}
+
+.commonSvcRank {
+  background-color: #EBB61726;
+}
+
+.card-theme {
+  --td-swiper-radius: 0;
+  --td-swiper-item-padding: 0 12rpx;
+  --td-swiper-nav-dot-color: #e7e7e7;
+  --td-swiper-nav-dot-active-color: #0052d9;
+  padding-bottom: 18px;
+}
+
+.card-theme .card-theme-nav {
+  bottom: -18px;
+}

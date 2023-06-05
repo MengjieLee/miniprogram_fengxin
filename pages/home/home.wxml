@@ -1,0 +1,107 @@
+<t-toast id="t-toast" />
+<t-dialog visible="{{showScanCodeConfirm}}" title="扫一扫测试标题" content="感谢使用，目前该小程序还没发布，无法跳转" confirm-btn="{{ confirmScanCodeBtn }}" cancel-btn="取消" bind:confirm="scanCodeConfirmBtn" bind:cancel="closeDialog" />
+<t-row>
+  <t-col span="24">
+    <t-image class="titleImage" src="/static/image/home_title_bg.jpg" aria-label="奉新标志景观图" />
+  </t-col>
+</t-row>
+<t-row class="searchCoverView">
+  <t-col offset="1" span="22">
+    <t-search t-class-input="homeSearchInput" t-class-input-container="homeSearchContainer" placeholder="搜索功能即将上线 ..." shape="round" clearable />
+  </t-col>
+</t-row>
+<t-row class="welcomeCoverView">
+  <t-col offset="1" span="22">
+    <text>你好！欢迎来奉新！</text>
+  </t-col>
+</t-row>
+<t-row class="userCardWrapper">
+  <t-col offset="1" span="22">
+    <view class="userCardView">
+      <t-row wx:if="{{!hasUserInfo}}" bindtap="patchUserInfo">
+        <t-col span="6" class="userCardCol">
+          <view class="userCardAvatarWrapper">
+            <t-avatar image="/static/image/default_avatar.svg" size="108rpx" />
+          </view>
+        </t-col>
+        <t-col span="12" class="userCardDetail">
+          <view>
+            <text class="loginText">请先登录 ></text>
+          </view>
+        </t-col>
+      </t-row>
+      <t-row wx:else bindtap="patchUserInfo">
+        <t-col span="6" class="userCardCol">
+          <view class="userCardAvatarWrapper">
+            <t-avatar class="userCardAvatar" image="{{userInfo.avatarUrl ? userInfo.avatarUrl : '/static/image/default_avatar.svg'}}" size="128rpx" />
+          </view>
+          <view class="userCardGenderWrapper">
+            <t-icon class="userGender-{{userInfo.gender}}" name="gender-{{userInfo.gender}}" size="large" />
+          </view>
+        </t-col>
+        <t-col span="12" class="userCardDetail">
+          <view>
+            <text class="userCardUserName">{{userInfo.userName}}</text>
+            <view class="userCardRegion">
+              <t-icon style="display: inline-block; margin-right: 12rpx;" name="usergroup" size="large" />
+              <text>{{userInfo.region}}</text>
+            </view>
+          </view>
+        </t-col>
+        <t-col span="6" class="userCardCoinCol">
+          <view>
+            <t-badge count="当前积分" color="#fd9a08" offset="{{ ['0rpx', '4rpx'] }}" ariaRole="button">
+              <t-icon name="/static/image/current_coin.svg" size="78rpx" />
+            </t-badge>
+            <view class="homeCoinContent">
+              <text>1000</text>
+            </view>
+          </view>
+        </t-col>
+      </t-row>
+    </view>
+  </t-col>
+</t-row>
+<t-row>
+  <t-col offset="1" span="22" class="notificationCol">
+    <t-notice-bar class="notificationContent" content="{{notificationList}}" visible="{{true}}" prefixIcon="null" direction="vertical">
+      <t-icon slot="prefix-icon" name="/static/image/notification.svg" size="48rpx" />
+    </t-notice-bar>
+  </t-col>
+</t-row>
+<t-row>
+  <t-col offset="1" span="22">
+    <t-grid>
+      <t-grid-item t-class="homeQuickEntry" text="扫一扫" image="/static/image/home_scan.svg" description="扫码工具" badge-props="{{ { count: '' } }}" jump-type="navigate-to" bindtap="scanCode" />
+      <t-grid-item t-class="homeQuickEntry" text="随手拍" image="/static/image/home_camera.svg" description="提交图文" badge-props="{{ { dot: true } }}" jump-type="navigate-to" url="/pages/camera/camera" />
+      <t-grid-item t-class="homeQuickEntry" text="意见反馈" image="/static/image/home_feedback.svg" description="政民互动" badge-props="{{ { count: '上新' } }}" jump-type="navigate-to" url="/pages/feedback/feedback" />
+      <t-grid-item t-class="homeQuickEntry" text="志愿服务" image="/static/image/home_activity.svg" description="互帮互助" badge-props="{{ { count: '热门' } }}" jump-type="navigate-to" url="/pages/activity/activity" />
+    </t-grid>
+  </t-col>
+</t-row>
+<t-row class="titleWrapper">
+  <t-col offset="1" span="22">
+    <text class="titleText">热门资讯</text>
+  </t-col>
+</t-row>
+<t-row>
+  <t-col offset="1" span="22">
+    <view class="card-theme">
+      <t-swiper current="{{current}}" autoplay="{{autoplay}}" duration="{{duration}}" interval="{{interval}}" bindclick="onClickSwiper" navigation="" list="{{swiperList}}" image-props="{{ { shape: 'round' } }}" height="240rpx" previousMargin="120rpx" nextMargin="120rpx" t-class-nav="card-theme-nav" />
+    </view>
+  </t-col>
+</t-row>
+<t-row class="titleWrapper">
+  <t-col offset="1" span="22">
+    <text class="titleText">常用服务</text>
+  </t-col>
+</t-row>
+<t-row>
+  <t-col offset="1" span="22">
+    <t-grid column="{{2}}" align="left">
+      <t-grid-item text="我要入党" image="/static/image/home_svc_party.svg" description="入党须知规章" layout="horizontal" class="commonSvc commonSvcParty" jump-type="navigate-to" url="/pages/applyParty/applyParty" />
+      <t-grid-item text="兑换礼品" image="/static/image/home_svc_redeem.svg" description="积分商城" layout="horizontal" class="commonSvc commonSvcRedeem" jump-type="navigate-to" url="/pages/redeem/redeem" />
+      <t-grid-item text="积分榜" image="/static/image/home_svc_rank.svg" description="总榜 | 社区榜" layout="horizontal" class="commonSvc commonSvcRank" jump-type="navigate-to" url="/pages/rank/rank" />
+    </t-grid>
+  </t-col>
+</t-row>

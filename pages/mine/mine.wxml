@@ -1,0 +1,76 @@
+<t-row>
+  <t-col span="24">
+    <view class="{{hasUserInfo ? 'titleImage': 'titleImageBrief'}}" />
+  </t-col>
+</t-row>
+<t-row class="userCardWrapper">
+  <t-col offset="1" span="22">
+    <view class="{{hasUserInfo ? 'userCardView' : 'userCardBriefView'}}">
+      <t-row wx:if="{{!hasUserInfo}}" bindtap="patchUserInfo">
+        <t-col span="6" class="userCardCol">
+          <view class="userCardAvatarWrapper">
+            <t-avatar image="/static/image/default_avatar.svg" size="108rpx" />
+          </view>
+        </t-col>
+        <t-col span="12" class="userCardDetail">
+          <view>
+            <text class="loginText">请先登录 ></text>
+          </view>
+        </t-col>
+      </t-row>
+      <t-row wx:else bindtap="patchUserInfo">
+        <t-col span="6" class="userCardCol">
+          <view class="userCardAvatarWrapper">
+            <t-avatar class="userCardAvatar" image="{{userInfo.avatarUrl ? userInfo.avatarUrl : '/static/image/default_avatar.svg'}}" size="128rpx" />
+          </view>
+          <view class="userCardGenderWrapper">
+            <t-icon class="userGender-{{userInfo.gender}}" name="gender-{{userInfo.gender}}" size="large" />
+          </view>
+        </t-col>
+        <t-col span="18" class="userCardDetail">
+          <view>
+            <text class="userCardUserName">{{userInfo.userName}}</text>
+            <view class="userCardRegion">
+              <t-icon style="display: inline-block; margin-right: 12rpx;" name="usergroup" size="large" />
+              <text>{{userInfo.region}}</text>
+            </view>
+          </view>
+        </t-col>
+      </t-row>
+      <t-row wx:if="{{hasUserInfo}}">
+        <t-grid border="{{coinGridBorder}}" column="{{3}}" t-class="coinGridWrapper">
+          <t-grid-item t-class-text="coinText currentCoin" t-class-image="coinIcon" text="70" image="/static/image/current_coin.svg" badge-props="{{ { count: '可使用', color: 'green', offset: ['50rpx', '86rpx'] } }}" />
+          <t-grid-item t-class-text="coinText redeemCoin" t-class-image="coinIcon" text="30" image="/static/image/redeem_coin.svg" badge-props="{{ { count: '已兑换', color: 'grey', offset: ['50rpx', '86rpx'] } }}" />
+          <t-grid-item t-class-text="coinText accumulativeCoin" t-class-image="coinIcon" text="1000" image="/static/image/accumulative_coin.svg" badge-props="{{ { count: '累积', color: '#B26932', offset: ['50rpx', '86rpx'] } }}" />
+        </t-grid>
+      </t-row>
+    </view>
+  </t-col>
+</t-row>
+<t-row class="relatedWrapper">
+  <t-col offset="1" span="22" class="wrapperContent">
+    <text class="title">与您相关</text>
+    <t-grid column="{{2}}" align="left">
+      <t-grid-item text="个人信息" image="/static/image/related_svc_userinfo.svg" layout="horizontal" class="relatedSvc relatedSvcParty" jump-type="navigate-to" url="/pages/userinfo/userinfo" />
+      <t-grid-item text="我的活动" image="/static/image/related_svc_activity.svg" layout="horizontal" class="relatedSvc relatedSvcRedeem" jump-type="navigate-to" url="/pages/userinfo/userinfo" />
+      <t-grid-item text="我的积分" image="/static/image/related_svc_coin.svg" layout="horizontal" class="relatedSvc relatedSvcRank" jump-type="navigate-to" url="/pages/userinfo/userinfo" />
+      <t-grid-item text="兑换历史" image="/static/image/related_svc_redeem.svg" layout="horizontal" class="relatedSvc relatedSvcRank" jump-type="navigate-to" url="/pages/userinfo/userinfo" />
+    </t-grid>
+  </t-col>
+</t-row>
+<t-row class="commitRecordWrapper">
+  <t-col offset="1" span="22" class="wrapperContent">
+    <text class="title">提交记录</text>
+    <t-grid column="{{3}}" align="left">
+      <t-grid-item text="入党申请" class="recordSvc" image="/static/image/record_apply_party.svg" jump-type="navigate-to" url="/pages/userinfo/userinfo" />
+      <t-grid-item text="我的意见" class="recordSvc" image="/static/image/record_feedback.svg" jump-type="navigate-to" url="/pages/userinfo/userinfo" />
+      <t-grid-item text="随手拍" class="recordSvc" image="/static/image/record_camera.svg" jump-type="navigate-to" url="/pages/userinfo/userinfo" />
+    </t-grid>
+  </t-col>
+</t-row>
+<t-row class="signInOrOutBtn">
+  <t-col offset="1" span="22">
+    <t-button wx:if="{{hasUserInfo}}" theme="danger" ghost="{{true}}}" shape="round" bindtap="onLogout" block>退出登录</t-button>
+    <t-button wx:else theme="danger" shape="round" bindtap="patchUserInfo" block>注册登录</t-button>
+  </t-col>
+</t-row>

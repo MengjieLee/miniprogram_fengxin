@@ -1,0 +1,64 @@
+<form bindsubmit="formSubmit">
+  <t-cell-group theme="card">
+    <!-- 标题 -->
+    <t-cell>
+      <t-row slot="description">
+        <t-col span="24">
+          <view class="formLabelWrapper">
+            <view class="formLabelRequired">*</view> 标题
+          </view>
+        </t-col>
+        <t-col span="24">
+          <t-input class="formTitleInput" name="title" placeholder="请输入标题，至多20字" prefixIcon="{{ { name: 'app', ariaLabel: '提示' } }}" maxlength="20" />
+        </t-col>
+      </t-row>
+    </t-cell>
+    <!-- 具体描述 -->
+    <t-cell>
+      <t-row slot="description">
+        <t-col span="24">
+          <view class="formLabelWrapper">
+            <view class="formLabelRequired">*</view> 具体描述
+          </view>
+        </t-col>
+        <t-col span="24">
+          <t-textarea name="description" placeholder="请填写具体描述，至多600字" bordered maxlength="600" disableDefaultPadding="{{true}}" indicator />
+        </t-col>
+      </t-row>
+    </t-cell>
+    <!-- 上传图片 -->
+    <t-cell>
+      <t-row slot="description">
+        <t-col span="24">
+          <view class="formLabelWrapper">
+            <view class="formLabelRequired">*</view> 上传图片
+          </view>
+        </t-col>
+        <t-col span="24">
+          <t-upload media-type="{{['image']}}" files="{{imageOriginFiles}}" gridConfig="{{imageGridConfig}}" max="6" sizeLimit="{{imageSizeLimit}}" bind:success="handleImageUploadSuccess" bind:remove="handleImageUploadRemove" bind:click="handleImageUploadClick" />
+        </t-col>
+      </t-row>
+    </t-cell>
+    <!-- 发生时间 -->
+    <t-cell>
+      <t-row slot="description">
+        <t-col span="24">
+          <view class="formLabelWrapper">
+            <view class="formLabelRequired">*</view> 发现时间
+          </view>
+        </t-col>
+        <t-col span="24">
+          <t-input disabled class="formTitleInput" name="time" value="{{submitTimeText}}" placeholder="请选择发现时间" prefixIcon="{{ { name: 'app', ariaLabel: '提示' } }}">
+            <t-button slot="suffix" theme="primary" data-mode="submitTime" size="extra-small" bindtap="showSubmitTimePicker"> 获取时间 </t-button>
+          </t-input>
+          <t-date-time-picker title="选择日期和时间" visible="{{submitTimeVisible}}" mode="minute" value="{{submitTime}}" format="YYYY-MM-DD HH:mm" bindchange="onConfirm" bindpick="onColumnChange" bindcancel="hidePicker" />
+        </t-col>
+      </t-row>
+    </t-cell>
+  </t-cell-group>
+  <t-row>
+    <t-col offset="2" span="20">
+      <t-button icon="upload" theme="primary" class="submit-btn" type="submit" size="large" shape="round" block>提交</t-button>
+    </t-col>
+  </t-row>
+</form>

@@ -1,0 +1,8 @@
+<view>
+  <navigator url="/pages/sub-redeemGuide/sub-redeemGuide">
+    兑换指南
+  </navigator>
+</view>
+<view>
+  积分兑换好礼
+</view>

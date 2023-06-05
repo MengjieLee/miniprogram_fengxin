@@ -1,0 +1,6 @@
+<view>
+  <navigator url="/pages/sub-pointsGuide/sub-pointsGuide">
+    积分指南
+  </navigator>
+</view>
+<view>总榜 | 社区榜</view>

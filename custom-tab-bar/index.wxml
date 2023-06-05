@@ -1,0 +1,5 @@
+<t-tab-bar safe-area-inset-bottom="{{false}}" class="custom-tab-bar" bindchange="switchTab" split="{{false}}" value="{{value}}">
+  <t-tab-bar-item wx:for="{{list}}" wx:key="index" value="{{item.pagePath}}" icon="{{value === item.pagePath ? item.selectedIconPath : item.iconPath}}">
+    {{item.text}}
+  </t-tab-bar-item>
+</t-tab-bar>

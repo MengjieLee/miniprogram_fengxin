@@ -1,0 +1,8 @@
+<view>
+  <navigator url="/pages/sub-volunteersGuide/sub-volunteersGuide">
+    任务指南
+  </navigator>
+</view>
+<view>
+  志愿服务活动页面
+</view>

@@ -1,0 +1,121 @@
+<t-toast id="t-toast" />
+<view class="container">
+  <form bindsubmit="formSubmit">
+    <t-row class="row-avatar">
+      <t-badge class="avatar-badge" count="{{!userInfo.avatarUrl ? '点击获取头像' : null }}" offset="{{[0, 15]}}" shape="bubble" ariaRole="button">
+        <t-button class="{{userInfo.avatarUrl ? 'avatar-wrapper' : 'avatar-HL-wrapper'}}" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+          <t-avatar class="avatar" icon="{{userInfo.avatarUrl ? userInfo.avatarUrl : ''}}" image="{{userInfo.avatarUrl ? userInfo.avatarUrl : '/static/image/default_avatar.svg'}}" size="{{userInfo.avatarUrl ? '156rpx' : '128rpx'}}" />
+        </t-button>
+      </t-badge>
+      <t-icon class="{{userInfo.avatarUrl ? 'userinfo-avatar-setting' : ''}}" name="{{userInfo.avatarUrl ? 'edit' : '' }}" />
+      <t-icon class="userinfo-gender-{{userInfo.gender}}" name="gender-{{userInfo.gender}}" />
+      <view style="{{avatarUrlTipsStyle ? avatarUrlTipsStyle : 'display: none;' }}" slot="tips">
+        <t-icon style="display: inline-block; margin-right: 20rpx;" name="{{avatarUrlTipsIcon ? avatarUrlTipsIcon : ''}}" size="24rpx" />
+      </view>
+    </t-row>
+    <t-row>
+      <t-input prefix-icon="user" style="{{userNameLayoutStyle ? userNameLayoutStyle : ''}}" type="nickname" name="userName" data-key="userName" data-value="{{userInfo.userName}}" clearable placeholder="请输入真实姓名" value="{{userInfo.userName}}" bind:nicknamereview="userNameReview" bind:blur="formInputCommonBlur" maxlength="20">
+        <view class="label-column" slot="label">
+          <view class="form-label-required">*</view> 真实姓名
+        </view>
+        <view style="{{userNameTipsStyle ? userNameTipsStyle : 'display: none;' }}" slot="tips">
+          <t-icon style="display: inline-block; margin-right: 20rpx;" name="{{userNameTipsIcon ? userNameTipsIcon : ''}}" size="24rpx" />
+        </view>
+      </t-input>
+    </t-row>
+    <t-row>
+      <t-input prefix-icon="hourglass" style="{{ageLayoutStyle ? ageLayoutStyle : ''}}" type="number" name="age" data-key="age" clearable placeholder="请输入真实年龄" value="{{userInfo.age ? userInfo.age : ''}}" bind:blur="formInputCommonBlur">
+        <view class="label-column" slot="label">
+          <view class="form-label-required">*</view> 年龄
+        </view>
+        <view style="{{ageTipsStyle ? ageTipsStyle : 'display: none;' }}" slot="tips">
+          <t-icon style="display: inline-block; margin-right: 20rpx;" name="{{ageTipsIcon ? ageTipsIcon : ''}}" size="24rpx" />
+        </view>
+      </t-input>
+    </t-row>
+    <t-row>
+      <!-- <button block class="phone-wrapper" open-type="getPhoneNumber" bind:getphonenumber="onGetPhoneNumber"> -->
+      <t-input prefix-icon="call" style="{{phoneLayoutStyle ? phoneLayoutStyle : ''}}" type="number" name="phone" data-key="phone" clearable placeholder="请输入手机号码" value="{{userInfo.phone ? userInfo.phone : ''}}" bind:blur="formInputCommonBlur" maxlength="20">
+        <view class="label-column" slot="label">
+          <view class="form-label-required">*</view> 手机号码
+        </view>
+        <view style="{{phoneTipsStyle ? phoneTipsStyle : 'display: none;' }}" slot="tips">
+          <t-icon style="display: inline-block; margin-right: 20rpx;" name="{{phoneTipsIcon ? phoneTipsIcon : ''}}" size="24rpx" />
+        </view>
+      </t-input>
+      <!-- </button> -->
+    </t-row>
+    <t-row>
+      <t-input prefix-icon="location" style="{{addressLayoutStyle ? addressLayoutStyle : ''}}" name="address" data-key="address" clearable placeholder="请输入联系地址" value="{{userInfo.address ? userInfo.address : ''}}" bind:blur="formInputCommonBlur" maxlength="50">
+        <view class="label-column" slot="label">
+          <view class="form-label-required">*</view> 联系地址
+        </view>
+        <view style="{{addressTipsStyle ? addressTipsStyle : 'display: none;' }}" slot="tips">
+          <t-icon style="display: inline-block; margin-right: 20rpx;" name="{{addressTipsIcon ? addressTipsIcon : ''}}" size="24rpx" />
+        </view>
+      </t-input>
+    </t-row>
+    <t-row>
+      <picker mode="multiSelector" data-key="region" data-value="{{regionValue}}" bindchange="bindRegionMultiPickerChange" bindcolumnchange="bindRegionMultiPickerColumnChange" bindcancel="onPickerClose" value="{{regionMultiIndex}}" range="{{regionMultiArray}}">
+        <t-input prefix-icon="usergroup" style="{{regionLayoutStyle ? regionLayoutStyle : ''}}" disabled name="region" clearable placeholder="请选择社区" value="{{regionValue ? regionValue : ''}}">
+          <view class="label-column" slot="label">
+            <view class="form-label-required">*</view> 社区
+          </view>
+          <view style="{{regionTipsStyle ? regionTipsStyle : 'display: none;' }}" slot="tips">
+            <t-icon style="display: inline-block; margin-right: 20rpx;" name="{{regionTipsIcon ? regionTipsIcon : ''}}" size="24rpx" />
+          </view>
+        </t-input>
+      </picker>
+    </t-row>
+    <t-row>
+      <t-input disabled prefix-icon="tools" style="{{jobLayoutStyle ? jobLayoutStyle : ''}}" name="job" data-key="job" clearable placeholder="请输入职业" value="{{jobValue.length > 0 ? jobValue[0] : ''}}" bind:blur="formInputCommonBlur" catch:tap="onShowPicker" bind:clear="onShowPicker" maxlength="20">
+        <view class="label-column" slot="label">
+          <view class="form-label-required">*</view> 职业
+        </view>
+        <view style="{{jobTipsStyle ? jobTipsStyle : 'display: none;' }}" slot="tips">
+          <t-icon style="display: inline-block; margin-right: 20rpx;" name="{{jobTipsIcon ? jobTipsIcon : ''}}" size="24rpx" />
+        </view>
+      </t-input>
+      <t-picker visible="{{jobVisible}}" value="{{jobValue}}" data-key="job" data-value="{{jobValue}}" title="请选择职业" cancelBtn="取消" confirmBtn="确认" bindchange="onPickerChange" bindcancel="onPickerCancel" bindclose="onPickerClose">
+        <t-picker-item options="{{jobArray}}"></t-picker-item>
+      </t-picker>
+    </t-row>
+    <t-row>
+      <t-input prefix-icon="fork" data-key="politics" style="{{politicsLayoutStyle ? politicsLayoutStyle : ''}}" disabled name="politics" clearable placeholder="请选择政治面貌" value="{{politicsValue.length > 0 ? politicsValue[0] : ''}}" catch:tap="onShowPicker" bind:clear="onShowPicker">
+        <view class="label-column" slot="label">
+          <view class="form-label-required">*</view> 政治面貌
+        </view>
+        <view style="{{politicsTipsStyle ? politicsTipsStyle : 'display: none;' }}" slot="tips">
+          <t-icon style="display: inline-block; margin-right: 20rpx;" name="{{politicsTipsIcon ? politicsTipsIcon : ''}}" size="24rpx" />
+        </view>
+      </t-input>
+      <t-picker visible="{{politicsVisible}}" value="{{politicsValue}}" data-key="politics" data-value="{{politicsValue}}" title="请选择政治面貌" cancelBtn="取消" confirmBtn="确认" bindchange="onPickerChange" bindcancel="onPickerCancel" bindclose="onPickerClose">
+        <t-picker-item options="{{politicsArray}}"></t-picker-item>
+      </t-picker>
+    </t-row>
+    <t-row>
+      <t-input prefix-icon="user-talk" style="{{volunteerIDLayoutStyle ? volunteerIDLayoutStyle : ''}}" name="volunteerID" data-key="volunteerID" clearable placeholder="请输入义工号(非必填)" value="{{userInfo.volunteerID ? userInfo.volunteerID : ''}}" maxlength="50">
+        <view class="label-column" slot="label">义工号</view>
+        <view style="{{volunteerIDTipsStyle ? volunteerIDTipsStyle : 'display: none;' }}" slot="tips">
+          <t-icon style="display: inline-block; margin-right: 20rpx;" name="{{volunteerIDTipsIcon ? volunteerIDTipsIcon : ''}}" size="24rpx" />
+        </view>
+      </t-input>
+    </t-row>
+    <t-row>
+      <t-radio-group t-class="horizontal-box" value="{{userInfo.gender}}" bind:change="onGender">
+        <view style="width: 240rpx; font-size: 36rpx;" slot="label">
+          <t-icon style="display: inline-block;margin-right: 12rpx;" name="relativity" />性别
+        </view>
+        <view wx:for="{{genderList}}" wx:key="index" class="card {{userInfo.gender == item.value ? 'card--active-' + userInfo.gender : ''}}">
+          <t-icon wx:if="{{userInfo.gender == item.value}}" name="check" t-class="card__icon" />
+          <t-radio value="{{item.value}}" label="{{item.label}}" icon="none" />
+        </view>
+      </t-radio-group>
+    </t-row>
+    <t-row>
+      <t-col offset="2" span="20">
+        <t-button icon="refresh" class="submit-btn" type="submit" size="large" shape="round" block>更 新 信 息</t-button>
+      </t-col>
+    </t-row>
+  </form>
+</view>

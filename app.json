@@ -1,0 +1,74 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/activity/activity",
+    "pages/camera/camera",
+    "pages/redeem/redeem",
+    "pages/feedback/feedback",
+    "pages/userinfo/userinfo",
+    "pages/rank/rank",
+    "pages/mine/mine",
+    "pages/scan/scan",
+    "pages/applyParty/applyParty",
+    "pages/sub-pointsGuide/sub-pointsGuide",
+    "pages/sub-volunteersGuide/sub-volunteersGuide",
+    "pages/sub-redeemGuide/sub-redeemGuide",
+    "pages/proposal/proposal"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "奉新-双进双服务",
+    "navigationBarTextStyle": "black"
+  },
+  "usingComponents": {
+    "t-icon": "tdesign-miniprogram/icon/icon",
+    "t-tab-bar": "tdesign-miniprogram/tab-bar/tab-bar",
+    "t-tab-bar-item": "tdesign-miniprogram/tab-bar-item/tab-bar-item",
+    "t-search": "tdesign-miniprogram/search/search",
+    "t-image": "tdesign-miniprogram/image/image",
+    "t-grid": "tdesign-miniprogram/grid/grid",
+    "t-grid-item": "tdesign-miniprogram/grid-item/grid-item",
+    "t-toast": "tdesign-miniprogram/toast/toast",
+    "t-row": "tdesign-miniprogram/row/row",
+    "t-col": "tdesign-miniprogram/col/col",
+    "t-notice-bar": "tdesign-miniprogram/notice-bar/notice-bar",
+    "t-radio-group": "tdesign-miniprogram/radio-group/radio-group",
+    "t-swiper": "tdesign-miniprogram/swiper/swiper",
+    "t-swiper-nav": "tdesign-miniprogram/swiper-nav/swiper-nav",
+    "t-radio": "tdesign-miniprogram/radio/radio",
+    "t-button": "tdesign-miniprogram/button/button",
+    "t-picker": "tdesign-miniprogram/picker/picker",
+    "t-avatar": "tdesign-miniprogram/avatar/avatar",
+    "t-badge": "tdesign-miniprogram/badge/badge",
+    "t-picker-item": "tdesign-miniprogram/picker-item/picker-item",
+    "t-input": "tdesign-miniprogram/input/input",
+    "t-loading": "tdesign-miniprogram/loading/loading",
+    "t-dialog": "tdesign-miniprogram/dialog/dialog",
+    "t-upload": "tdesign-miniprogram/upload/upload",
+    "t-cell-group": "tdesign-miniprogram/cell-group/cell-group",
+    "t-cell": "tdesign-miniprogram/cell/cell",
+    "t-textarea": "tdesign-miniprogram/textarea/textarea",
+    "t-date-time-picker": "tdesign-miniprogram/date-time-picker/date-time-picker",
+    "t-link": "tdesign-miniprogram/link/link"
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "custom": true,
+    "color": "#7A7E83",
+    "selectedColor": "#d81e06",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "个人中心"
+      }
+    ]
+  },
+  "lazyCodeLoading": "requiredComponents"
+}

@@ -154,5 +154,5 @@
 
 .submit-btn {
   color: white !important;
-  background-color: green !important;
+  background-color: #1AAD5E !important;
 }

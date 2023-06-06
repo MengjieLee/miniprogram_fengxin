@@ -1,3 +1,48 @@
 <view>
   意见反馈页面
 </view>
+<form bindsubmit="formSubmit">
+  <!-- 标题 -->
+  <t-row>
+    <t-col offset="1" span="22">
+      <view class="formLabelWrapper">
+        <view class="formLabelRequired">*</view> 标题
+      </view>
+    </t-col>
+    <t-col offset="1" span="22">
+      <t-input class="formTitleInput" name="title" placeholder="请输入标题，至多20字" prefixIcon="{{ { name: 'app', ariaLabel: '提示' } }}" maxlength="20" />
+    </t-col>
+  </t-row>
+  <!-- 分类 -->
+  <t-row>
+    <t-col offset="1" span="22">
+      <view class="formLabelWrapper">
+        <view class="formLabelRequired">*</view> 分类
+      </view>
+    </t-col>
+    <t-col offset="1" span="22">
+      <t-radio-group t-class="horizontal-box" value="{{category}}" bind:change="onCategoryChosen">
+        <view wx:for="{{categoryList}}" wx:key="index" class="card {{category == item.value ? 'card--active-' + category : ''}}">
+          <t-icon wx:if="{{category == item.value}}" name="check" t-class="card__icon" />
+          <t-radio name="category" value="{{item.value}}" label="{{item.label}}" icon="none" />
+        </view>
+      </t-radio-group>
+    </t-col>
+  </t-row>
+  <!-- 留言内容 -->
+  <t-row>
+    <t-col offset="1" span="22">
+      <view class="formLabelWrapper">
+        <view class="formLabelRequired">*</view> 留言内容
+      </view>
+    </t-col>
+    <t-col offset="1" span="22">
+      <t-textarea name="description" placeholder="请填写你的留言内容，至多200字" bordered maxlength="200" disableDefaultPadding="{{true}}" indicator />
+    </t-col>
+  </t-row>
+  <t-row>
+    <t-col offset="2" span="20">
+      <t-button icon="/static/image/home_feedback.svg" theme="primary" class="submit-btn" type="submit" size="large" shape="round" block>提交留言</t-button>
+    </t-col>
+  </t-row>
+</form>

@@ -17,5 +17,5 @@
 .submit-btn {
   margin-top: 20rpx;
   color: white !important;
-  background-color: green !important;
+  background-color: #1AAD5E !important;
 }

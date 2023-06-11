@@ -64,9 +64,7 @@
 </t-row>
 <t-row>
   <t-col offset="1" span="22" class="notificationCol">
-    <t-notice-bar class="notificationContent" content="{{notificationList}}" visible="{{true}}" prefixIcon="null" direction="vertical">
-      <t-icon slot="prefix-icon" name="/static/image/notification.svg" size="48rpx" />
-    </t-notice-bar>
+    <t-notice-bar class="notificationContent" content="{{notificationList}}" visible="{{true}}" prefixIcon="/static/image/notification.svg" direction="vertical" />
   </t-col>
 </t-row>
 <t-row>

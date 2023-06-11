@@ -1,0 +1,7 @@
+<t-result wx:if="{{resultInstance}}" theme="{{resultInstance.theme || ''}}">
+  <view slot="title"> {{resultInstance.title}} </view>
+  <view slot="description"> {{resultInstance.description}} </view>
+</t-result>
+<t-empty wx:else icon="info-circle-filled" description="当前为收集到有效数据">
+  <t-button slot="action" theme="primary" size="large">返回</t-button>
+</t-empty>

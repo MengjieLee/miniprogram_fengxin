@@ -13,7 +13,8 @@
     "pages/sub-pointsGuide/sub-pointsGuide",
     "pages/sub-volunteersGuide/sub-volunteersGuide",
     "pages/sub-redeemGuide/sub-redeemGuide",
-    "pages/proposal/proposal"
+    "pages/proposal/proposal",
+    "pages/result/result"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -50,6 +51,11 @@
     "t-cell": "tdesign-miniprogram/cell/cell",
     "t-textarea": "tdesign-miniprogram/textarea/textarea",
     "t-date-time-picker": "tdesign-miniprogram/date-time-picker/date-time-picker",
+    "t-dropdown-menu": "tdesign-miniprogram/dropdown-menu/dropdown-menu",
+    "t-dropdown-item": "tdesign-miniprogram/dropdown-item/dropdown-item",
+    "t-result": "tdesign-miniprogram/result/result",
+    "t-empty": "tdesign-miniprogram/empty/empty",
+    "t-tag": "tdesign-miniprogram/tag/tag",
     "t-link": "tdesign-miniprogram/link/link"
   },
   "sitemapLocation": "sitemap.json",

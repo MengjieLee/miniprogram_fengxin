@@ -1,8 +1,126 @@
-<view>
+<t-dialog class="activityDetailDialogWrapper" visible="{{activityDetailDialogVisible}}" title="{{activityDetailShowItem.task_name || ''}}" confirm-btn="我要报名" cancel-btn="我再看看" bind:confirm="confirmActivityDetailDialog" bind:cancel="closeActivityDetailDialog">
+  <t-image slot="top" t-class="dialog-image" mode="widthFix" src="/static/image/dialog_activity.png" />
+  <scroll-view slot="content" scroll-y class="long-content" scroll-with-animation="{{true}}">
+    <view class="content-container">
+      <t-row>
+        <t-col span="24">
+          活动描述: {{activityDetailShowItem.task_description}}
+        </t-col>
+      </t-row>
+      <t-row>
+        <t-col span="24">
+          活动时间: {{activityDetailShowItem.task_date}} {{activityDetailShowItem.task_period}}
+        </t-col>
+      </t-row>
+      <t-row>
+        <t-col span="24">
+          年龄限制: {{activityDetailShowItem.age_restriction}}
+        </t-col>
+      </t-row>
+      <t-row>
+        <t-col span="24">
+          注意事项: {{activityDetailShowItem.notice}}
+        </t-col>
+      </t-row>
+    </view>
+  </scroll-view>
+</t-dialog>
+
+<view class="activitySwiper">
   <navigator url="/pages/sub-volunteersGuide/sub-volunteersGuide">
-    任务指南
+    <t-image width="100%" mode="widthFix" shape="round" src="/static/image/swiper_activity.png" />
   </navigator>
 </view>
-<view>
-  志愿服务活动页面
+<view class="activityFilter">
+  <t-row>
+    <t-col offset="1" span="22">
+      <t-search class="searchWrapper" placeholder="输入活动名字关键字快速搜索，如：xx社区，环境，双创" shape="round" clearable bind:change="searchValueChangeFilter" bind:clear="searchValueClearFilter" />
+    </t-col>
+  </t-row>
+  <t-row>
+    <t-col span="8" class="dropdownMenuCol">
+      <t-dropdown-menu show-overlay="{{false}}">
+        <t-dropdown-item data-key="state" options="{{state.options}}" value="{{state.value}}" bindchange="handleFilterSelect" />
+      </t-dropdown-menu>
+    </t-col>
+    <t-col span="8" data-key="recruited" class="dropdownMenuCol" bindtap="handleFilterSort">已招募人数
+      <t-icon name="/static/icon/icon_{{recruited_sort}}.svg" />
+    </t-col>
+    <t-col span="8" data-key="reward" class="dropdownMenuCol" bindtap="handleFilterSort">积分值
+      <t-icon name="/static/icon/icon_{{reward_sort}}.svg" />
+    </t-col>
+  </t-row>
+</view>
+<view class="activityContent">
+  <t-row>
+    <block wx:for="{{defaultActivityData}}" wx:key="index">
+      <t-col span="24" class="blockStyle">
+        <t-row gutter="12">
+          <t-col span="8">
+            <t-row class="oneRowLeftWrapper">
+              <t-image width="100%" mode="widthFix" shape="round" src="https://tdesign.gtimg.com/miniprogram/images/cell1.png" />
+              <t-icon class="stateBadge" name="/static/icon/icon_{{item.state}}.svg" />
+            </t-row>
+          </t-col>
+          <t-col span="16">
+            <t-row class="oneRowRightWrapper" gutter="4">
+              <t-col span="24" class="oneRowTitle">{{item.task_name}}</t-col>
+              <t-col span="24" class="oneRowRightContentItem oneRowDesc">
+                <text>【简介】</text>
+                <text>{{item.task_description}}</text>
+              </t-col>
+              <t-col span="12" class="oneRowRightContentItem">
+                <t-icon class="descColIcon" name="/static/icon/icon_location.svg" />
+                <text>{{item.location}}</text>
+              </t-col>
+              <t-col span="12" class="oneRowRightContentItem">
+                <t-icon class="descColIcon" name="/static/icon/icon_time.svg" />
+                <text>{{item.task_time_tag}}</text>
+              </t-col>
+              <t-col span="12" class="oneRowRightContentItem">
+                <t-icon class="descColIcon" name="/static/icon/icon_sponsor.svg" />
+                <text>{{item.sponsor}}</text>
+              </t-col>
+              <t-col span="12" class="oneRowRightContentItem">
+                <t-icon class="descColIcon" name="/static/icon/icon_call.svg" />
+                <text>{{item.phone}}</text>
+              </t-col>
+              <t-col span="12" class="oneRowRightContentItem">
+                <t-icon class="descColIcon" name="/static/icon/icon_recruited.svg" />
+                <text wx:if="{{item.state === 'finished'}}">{{item.recruited}}/{{item.headcount}}</text>
+                <t-badge wx:else count="余 {{item.headcount - item.recruited}} 名额" offset="{{ ['-60rpx', '4rpx'] }}" shape="bubble" ariaRole="button">
+                  <text>{{item.recruited}}/{{item.headcount}}</text>
+                </t-badge>
+              </t-col>
+              <t-col span="12" class="oneRowRightContentItem">
+                <t-icon class="descColIcon" name="/static/icon/icon_reward.svg" />
+                <text>{{item.reward}}</text>
+              </t-col>
+            </t-row>
+          </t-col>
+          <t-col span="24">
+            <t-row>
+              <t-col span="8">
+                <t-row>
+                  <t-col span="12">
+                    <t-tag size="small" theme="primary" variant="outline" icon="discount">{{item.region}}</t-tag>
+                  </t-col>
+                  <t-col span="12">
+                    <view class="likeWrapper">
+                      <t-icon class="descColIcon" name="/static/icon/icon_like.svg" />
+                      <text class="likeNum">0</text>
+                    </view>
+                  </t-col>
+                </t-row>
+              </t-col>
+              <t-col offset="8" span="8" class="oneRowBtnWrapper">
+                <t-button wx:if="{{item.state === 'finished'}}" data-item="{{item}}" ghost theme="primary" block class="oneRowRightContentItem oneRowBtn">活动已结束</t-button>
+                <t-button wx:else data-item="{{item}}" icon="/static/icon/icon_signup.svg" theme="primary" block class="oneRowRightContentItem oneRowBtn" bind:tap="showActivityDialog">报名详情</t-button>
+              </t-col>
+            </t-row>
+          </t-col>
+        </t-row>
+      </t-col>
+    </block>
+  </t-row>
 </view>

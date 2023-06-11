@@ -1,0 +1,142 @@
+.activitySwiper {}
+
+.activityFilter {
+  margin: 8rpx 0rpx;
+}
+
+.searchWrapper {
+  height: 80rpx;
+  --td-search-height: 60rpx;
+  --td-search-font-size: 24rpx;
+}
+
+.t-icon-search {
+  font-size: 32rpx;
+}
+
+/* .contentSequence {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60rpx;
+  font-size: 32rpx;
+} */
+
+.t-dropdown-menu {
+  background: none !important;
+}
+
+.dropdownMenuCol {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24rpx;
+  height: 80rpx !important;
+  --td-component-border: 0rpx !important;
+  --td-dropdown-menu-font-sizem: 24rpx !important;
+}
+
+.activityContent {
+  /* background-color: rgb(226, 226, 226); */
+}
+
+.blockStyle {
+  margin: 14rpx 0rpx;
+  padding: 14rpx;
+  box-shadow: 0rpx 0rpx 4rpx 10rpx rgba(228, 228, 228, 0.25), 0rpx 4rpx 10rpx rgba(209, 209, 209, 0.5);
+}
+
+.oneRowLeftWrapper {
+  height: 240rpx;
+}
+
+.stateBadge {
+  display: inline-block;
+  position: relative;
+  top: -240rpx;
+  left: -10rpx;
+  font-size: 120rpx;
+}
+
+.likeWrapper {
+  text-align: right;
+  padding-right: 12rpx;
+}
+
+.likeNum {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 24rpx;
+  color: #00000099;
+}
+
+.oneRowRightWrapper {
+  height: 240rpx;
+}
+
+.oneRowRightContentItem {
+  margin-top: 4rpx;
+  color: #00000099;
+  font-size: 22rpx;
+}
+
+.oneRowBtnWrapper {
+  height: 48rpx;
+  text-align: left;
+}
+
+.oneRowBtn {
+  --td-button-medium-height: 48rpx;
+  font-size: 24rpx !important;
+}
+
+.oneRowTitle {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 28rpx;
+}
+
+.oneRowDesc {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.itemWithIcon {
+  display: flex;
+  align-items: center;
+}
+
+.descColIcon {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 24rpx;
+  margin-right: 8rpx;
+}
+
+.dialog-image {
+  position: fixed;
+  width: 100%;
+  margin-top: -380rpx;
+}
+
+
+.activityDetailDialogWrapper {
+  margin-top: 200rpx;
+}
+
+.long-content {
+  height: 360rpx;
+  margin-top: 16rpx;
+  font-size: 32rpx;
+  color: #888;
+}
+
+.long-content .content-container {
+  white-space: pre-line;
+}

@@ -2,7 +2,7 @@ import {
   totalRegionData,
   totalJobData,
   totalPoliticsData,
-} from './data'
+} from '../../services/data'
 import {
   customInputValidation,
   initThreeLayerPickerDefaultArray,

@@ -38,7 +38,7 @@ function customInputValidation(key, value) {
 
     const addressRegCheck = (address) => {
       // 联系地址正则字符串
-      const addressReg = /^.{4,40}$/
+      const addressReg = /^.{4,80}$/
       const addressRegExp = new RegExp(addressReg)
       return addressRegExp.test(address)
     }

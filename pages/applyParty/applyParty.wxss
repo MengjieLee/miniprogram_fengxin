@@ -1,3 +1,4 @@
-page {
-  
+.formLabelRequired {
+  display: inline-block;
+  color: red;
 }

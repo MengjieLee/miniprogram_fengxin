@@ -1,1 +1,30 @@
-<view>填写"我要入党"资料</view>
+<form bindsubmit="formSubmit">
+  <!-- 标题 -->
+  <t-row>
+    <t-col offset="1" span="22">
+      <view class="formLabelWrapper">
+        <view class="formLabelRequired">*</view> 联系电话
+      </view>
+    </t-col>
+    <t-col offset="1" span="22">
+      <t-input placeholder="请输入手机号码" class="formTitleInput" name="phone" bindchange="onPhoneInput" data-key="phone" type="number">
+        <t-button slot="suffix" theme="primary" size="extra-small" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"> 授权快速录入 </t-button>
+      </t-input>
+    </t-col>
+    <t-col offset="1" span="22">
+      <view class="formLabelWrapper">
+        <view class="formLabelRequired">*</view> 居住地
+      </view>
+    </t-col>
+    <t-col offset="1" span="22">
+      <t-input placeholder="请填写居住地" class="formTitleInput" name="address" bindchange="onPhoneInput" data-key="address" maxlength="{{80}}">
+        <t-button slot="suffix" theme="primary" size="extra-small"> 定位录入 </t-button>
+      </t-input>
+    </t-col>
+  </t-row>
+  <t-row>
+    <t-col offset="2" span="20">
+      <t-button icon="/static/image/home_feedback.svg" theme="primary" class="submit-btn" type="submit" size="large" shape="round" block>提交申请</t-button>
+    </t-col>
+  </t-row>
+</form>
